@@ -151,3 +151,40 @@ json
 8. 用AES秘钥解密密文C
 9. 处理业务
 10. 响应数据（可加密返回，返回结果用前端生产的AES秘钥加密返回）
+
+示例：
+
+```java
+ public static void main(String[] args) throws Exception {
+        String publicKey = "your key";
+        //生成随机的AES秘钥
+        String aesKey = AES.getAESKey(16);
+        System.out.println("AES的key是(加密之前): " + aesKey);
+
+        //模拟业务数据，并用AES的key加密
+        Map<String, Object> dataMap = new HashMap<>();
+        dataMap.put("stuId", 1);
+        dataMap.put("stuName", "张三");
+
+        JSONObject dataJson = new JSONObject(dataMap);
+        String encryptData = AES.encryptToBase64(dataJson.toJSONString(), aesKey);
+        System.out.println("加密后的数据: " + encryptData);
+
+        //把AES的key用RSA加密
+        byte[] encryptAesKey = RSAUtil.encryptByPublicKey(aesKey.getBytes(StandardCharsets.UTF_8), publicKey, 245);
+        System.out.println("加密之后的AES-key: " + toHexString(encryptAesKey));
+
+        //AES解密
+        //再用AES的key解密数据
+        String data = AES.decryptFromBase64(encryptData, aesKey);
+        System.out.println(data);
+
+//        encryptAesTest();
+    }
+
+    public static void encryptAesTest(){
+        String content="your content";
+        String result = AES.decryptFromBase64(content, "your aesKey");
+        System.out.println(result);
+    }
+```
