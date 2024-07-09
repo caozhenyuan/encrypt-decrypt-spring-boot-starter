@@ -5,7 +5,7 @@
 pom.xml
 
 ~~~xml
-		<dependency>
+        <dependency>
             <groupId>com.czy</groupId>
             <artifactId>encrypt-decrypt-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -127,3 +127,18 @@ public class TestController {
     }
 }
 ```
+
+前端默认传值：
+
+json
+
+~~~json
+{
+    "content": "",
+    "aesKey":""
+}
+~~~
+
+流程：
+
+![image-20240709145728015](README.assets/image-20240709145728015.png)
