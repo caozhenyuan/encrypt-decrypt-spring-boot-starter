@@ -1,0 +1,30 @@
+{
+  "groups": [],
+  "hints": [],
+  "properties": [
+    {
+      "sourceType": "com.czy.config.KeyProperties",
+      "name": "spring.encrypt.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用加密"
+    },
+    {
+      "sourceType": "com.czy.config.KeyProperties",
+      "name": "spring.encrypt.privateKey",
+      "type": "java.lang.String",
+      "description": "RSA私钥"
+    },
+    {
+      "sourceType": "com.czy.config.KeyProperties",
+      "name": "spring.encrypt.contentJsonKey",
+      "type": "java.lang.String",
+      "description": "前端内容json key"
+    },
+    {
+      "sourceType": "com.czy.config.KeyProperties",
+      "name": "spring.encrypt.aesJsonKey",
+      "type": "java.lang.String",
+      "description": "前端加密过后的aesKey key"
+    }
+  ]
+}
