@@ -63,6 +63,7 @@ public class EncryptResponse implements ResponseBodyAdvice<Object> {
         //把接口的出参，用前端此次传过来的AES密钥进行加密，然后返回
         String encryptData = AES.encryptToBase64(body.toString(), aesKeyKey);
         AesKeyThreadLocal.remove();
+        //todo 此处是可以修改为自己的响应对象，也可以不封装直接返回
         body = AjaxResultVo.ok(encryptData);
         return body;
     }
