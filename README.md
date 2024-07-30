@@ -1,5 +1,9 @@
 # encrypt-decrypt-spring-boot-starter
 
+## 已做：
+
+1. RSA和AES接口加密
+
 ## 使用方式：
 
 pom.xml
@@ -17,14 +21,19 @@ application.yml
 ~~~yaml
 spring:
   encrypt:
+  	#是否开启加密
     enabled: true
     #私钥
     privateKey: your key
+    #前端内容json key
+    contentJsonKey: content
+    #前端加密过后的aesKey key
+    aesJsonKey: aesKey
 ~~~
 
-entity
+测试entity
 
-~~~
+~~~java
 public class TbStudent implements Serializable {
 
     private static final long serialVersionUID = -7251361343985943405L;
@@ -128,9 +137,7 @@ public class TestController {
 }
 ```
 
-前端默认传值：
-
-json
+前端默认传值：JSON,这是默认的传入JSON,可以在配置文件里修改键。
 
 ~~~json
 {
@@ -139,7 +146,7 @@ json
 }
 ~~~
 
-流程：
+## 流程：
 
 1. 用户操作
 2. 前端组装JSON
@@ -152,7 +159,7 @@ json
 9. 处理业务
 10. 响应数据（可加密返回，返回结果用前端生产的AES秘钥加密返回）
 
-示例：
+测试示例：
 
 ```java
  public static void main(String[] args) throws Exception {
