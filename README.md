@@ -124,6 +124,8 @@ public class TbStudent implements Serializable {
 
 controller
 
+注意：如果不想使用AjaxResultVo做返回，请参考EncryptResponse类里的beforeBodyWrite的todo,自做修改。
+
 ```java
 @RestController
 @RequestMapping("/test")
